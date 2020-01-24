@@ -196,20 +196,18 @@ def player_stats(player_name)
   hash
 end 
 
-def big_shoe_rebounds 
-	biggest_shoe = 0
-	rebounds = 0
-	game_hash.each do |location, loc_data|
-		loc_data[:players].each do |player, stats|
-			if stats[:shoe] > biggest_shoe 
-				biggest_shoe = stats[:shoe]
-			end
-			if stats[:shoe] == biggest_shoe
-				rebounds = stats[:rebounds]
-			end
-		end
-	end
-	return rebounds
+def big_shoe_rebounds
+  big_shoes_guy = 0
+  rebounds = 0
+    game_hash.each do | team, team_details_hash|
+      team_details_hash[:players].each do | stats |
+        if stats[:shoe] > big_shoes_guy
+          big_shoes_guy = stats[:shoe]
+          rebounds = stats[:rebounds]
+        end
+      end
+    end
+  rebounds
 end
 
   
